@@ -1,5 +1,12 @@
 # Заключительное задание
 
+[Задача](#задача)
+
+[Задание 2. Создание алгоритма решения задачи](#задание-2-создание-алгоритма-решения-задачи)
+
+[Задание 3. Решение задачи на C#](#задание-3-решение-задачи-на-c)
+
+
 ## **Задача**: 
 Написать программу, которая из имеющегося массива строк формирует новый массив из строк, длина которых меньше, либо равна 3 символам. Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма. При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 
@@ -19,7 +26,49 @@ ___
 
 ## **Задание 3. Решение задачи на C#**
 
-В папке Task решение задачи на C#.
-В файле есть два решения данной задачи: 1) решение с помощью двух массивов, 2) решение с одним массивом (элементы для массива вводит пользователь и на этапе ввода сразу идет проверка по условию "длина символов <= 3" и в случае соответствия, данный элемент добавляется в массив).
+```
+// Ввод массива
+string[] InputMassive(int size)
+{
+    string[] arry = new string[size]; // Задаем массив
+    for (int i = 0; i < size; i++)
+    {
+        Console.WriteLine($"Введите элемент {i} массива: ");
+        string element = Convert.ToString(Console.ReadLine()!);
+        arry[i] = element;
+    }
+    return arry;
+}
+// Вывод массива
+void PrintMassive(string[] arry)
+{
+    for (int i = 0; i < arry.Length; i++)
+        Console.Write($" {arry[i]}  ");
+    Console.WriteLine();
+}
 
+string[] LengthLineThree(int size, string[] arry, int lengthLine)
+{
+    string[] arryResult = new string[size]; // Задаем массив
+    for (int i = 0; i < size; i++)
+    {
+        if (arry[i].Length <= lengthLine)
+        {
+            arryResult[i] = arry[i];
+        }
+    }
+    return arryResult;
+}
+Console.WriteLine("Введите длину массива: ");
+int size = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine("Введите длину элемента массива: ");
+int lengthLine = int.Parse(Console.ReadLine()!);
+
+string[] arryBeging = InputMassive(size);
+PrintMassive(arryBeging);
+
+string[] arryResult = LengthLineThree(size, arryBeging, lengthLine);
+PrintMassive(arryResult);
+```
 ________
